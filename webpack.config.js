@@ -25,6 +25,12 @@ module.exports = {
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'svg-inline-loader'
+        }
       }
     ]
   },
