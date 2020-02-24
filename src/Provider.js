@@ -49,8 +49,6 @@ const propTypes = {
    */
   timeout: PropTypes.number,
 
-  template: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-
   context: PropTypes.shape({
     Provider: PropTypes.object,
     Consumer: PropTypes.object
@@ -71,7 +69,6 @@ const Provider = ({
   position,
   style,
   timeout,
-  template: AlertComponent,
   context: Context,
   ...props
 }) => {
@@ -176,7 +173,7 @@ const Provider = ({
             >
               {alert ? (
                 <AlertTransition in key={alert.id}>
-                  <AlertComponent dismiss={dismiss} {...alert} />
+                  <AlertTemplate dismiss={dismiss} {...alert} />
                 </AlertTransition>
               ) : null}
             </TransitionGroup>

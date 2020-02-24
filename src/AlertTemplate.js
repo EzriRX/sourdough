@@ -1,11 +1,11 @@
 import React from 'react'
 
-import toastSuccessIcon from './icons/toast-success.svg'
-import modalSuccessIcon from './icons/modal-success.svg'
-import toastFailureIcon from './icons/toast-failure.svg'
-import modalFailureIcon from './icons/modal-failure.svg'
-import toastInfoIcon from './icons/toast-info.svg'
-import toastWarningIcon from './icons/toast-warning.svg'
+import toastSuccessIcon from './assets/icons/toast-success.svg'
+import modalSuccessIcon from './assets/icons/modal-success.svg'
+import toastFailureIcon from './assets/icons/toast-failure.svg'
+import modalFailureIcon from './assets/icons/modal-failure.svg'
+import toastInfoIcon from './assets/icons/toast-info.svg'
+import toastWarningIcon from './assets/icons/toast-warning.svg'
 
 const AlertTemplate = ({ dismiss, message, options }) => {
   const alertType = options.alertType || 'toast'
@@ -25,14 +25,20 @@ const AlertTemplate = ({ dismiss, message, options }) => {
     <div className={`sourdough alert-${alertType}`}>
       {alertType === 'toast' ? (
         <>
-          <img src={toastIcons[options.style]} alt="icon" />
+          <span
+            className="icon"
+            dangerouslySetInnerHTML={{ __html: toastIcons[options.style] }}
+          />
           <div className="alert-content">
             <p>{message}</p>
           </div>
         </>
       ) : (
         <>
-          <img src={modalIcons[options.style]} alt="icon" />
+          <span
+            className="icon"
+            dangerouslySetInnerHTML={{ __html: modalIcons[options.style] }}
+          />
           <div className="alert-content">{message}</div>
           <div className="alert-actions">
             <button

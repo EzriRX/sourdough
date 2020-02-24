@@ -1,14 +1,18 @@
 var path = require('path')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'index.js',
-    libraryTarget: 'commonjs2'
+    filename: 'index.js'
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.css'
+    })
+  ],
   module: {
     rules: [
       {
@@ -20,11 +24,13 @@ module.exports = {
         }
       },
       {
-        test: /\.*css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.svg$/,
