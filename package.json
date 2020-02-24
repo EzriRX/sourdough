@@ -1,0 +1,17 @@
+{
+  "name": "sourdough",
+  "version": "1.0.0",
+  "description": "React library for toast and modal style alerts",
+  "repository": "git@github.com:EzriRX/react-alert.git",
+  "author": "Brad Purchase <brad@ezrirx.com>",
+  "license": "MIT",
+  "private": true,
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6"
+  }
+}
