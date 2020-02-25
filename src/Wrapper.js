@@ -1,4 +1,7 @@
 import React, { useMemo } from 'react'
+import { useMediaQuery } from 'react-responsive'
+
+import { mobileAlertWrapperStyle, alertWrapperStyle } from './AlertStyles'
 import { positions } from './options'
 
 export const getStyles = position => {
@@ -9,6 +12,7 @@ export const getStyles = position => {
     ...initialStyles
   }
   const padding = '20px'
+
   switch (position) {
     case positions.TOP_LEFT:
       return {
@@ -69,20 +73,15 @@ export const getStyles = position => {
   }
 }
 
-const Wrapper = ({
-  children,
-  options: { position, containerStyle },
-  ...props
-}) => {
+const Wrapper = ({ children, options: { alert }, ...props }) => {
+  const position = alert.options.position
   const styles = useMemo(() => getStyles(position), [position])
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
+  const wrapperStyle = isMobile ? mobileAlertWrapperStyle : alertWrapperStyle
 
   return (
     children.length > 0 && (
-      <div
-        className="alert-wrapper"
-        style={{ ...styles, ...containerStyle }}
-        {...props}
-      >
+      <div style={{ ...styles, ...wrapperStyle }} {...props}>
         {children}
       </div>
     )

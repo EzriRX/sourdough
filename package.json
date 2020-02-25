@@ -2,15 +2,15 @@
   "name": "@ezrirx/sourdough",
   "version": "1.0.0",
   "description": "React library for toast and modal style alerts",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/EzriRX/sourdough.git"
-  },
   "author": "Brad Purchase <brad@ezrirx.com>",
   "bugs": {
     "url": "https://github.com/EzriRX/sourdough/issues"
   },
   "homepage": "https://github.com/EzriRX/sourdough#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/EzriRX/sourdough.git"
+  },
   "license": "MIT",
   "private": true,
   "main": "build/index.js",
@@ -20,16 +20,10 @@
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.2",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-transition-group": "^4.3.0",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.1.3",
-    "svg-inline-loader": "^0.8.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
   },
@@ -40,5 +34,8 @@
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack"
+  },
+  "dependencies": {
+    "react-responsive": "^8.0.3"
   }
 }

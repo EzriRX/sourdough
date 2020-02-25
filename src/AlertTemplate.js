@@ -1,46 +1,47 @@
 import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 
-import toastSuccessIcon from './assets/icons/toast-success.svg'
-import modalSuccessIcon from './assets/icons/modal-success.svg'
-import toastFailureIcon from './assets/icons/toast-failure.svg'
-import modalFailureIcon from './assets/icons/modal-failure.svg'
-import toastInfoIcon from './assets/icons/toast-info.svg'
-import toastWarningIcon from './assets/icons/toast-warning.svg'
+import {
+  sourdoughStyle,
+  toastStyle,
+  toastContentStyle,
+  toastContentTextStyle,
+  modalStyle,
+  mobileModalStyle,
+  modalContentStyle
+} from './AlertStyles'
+
+import SuccessIcon from './icons/SuccessIcon'
+import FailureIcon from './icons/FailureIcon'
+import InfoIcon from './icons/InfoIcon'
+import WarningIcon from './icons/WarningIcon'
 
 const AlertTemplate = ({ dismiss, message, options }) => {
-  const alertType = options.alertType || 'toast'
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
-  const toastIcons = {
-    success: toastSuccessIcon,
-    failure: toastFailureIcon,
-    info: toastInfoIcon,
-    warning: toastWarningIcon
-  }
-  const modalIcons = {
-    success: modalSuccessIcon,
-    failure: modalFailureIcon
+  const alertType = options.alertType || 'toast'
+  const isToast = alertType === 'toast'
+  let alertStyle = toastStyle
+  if (!isToast) {
+    alertStyle = isMobile ? mobileModalStyle : modalStyle
   }
 
   return (
-    <div className={`sourdough alert-${alertType}`}>
-      {alertType === 'toast' ? (
+    <div style={{ ...sourdoughStyle, ...alertStyle }}>
+      {isToast ? (
         <>
-          <span
-            className="icon"
-            dangerouslySetInnerHTML={{ __html: toastIcons[options.style] }}
-          />
-          <div className="alert-content">
-            <p>{message}</p>
+          {options.style === 'success' && <SuccessIcon />}
+          {options.style === 'failure' && <FailureIcon />}
+          {options.style === 'info' && <InfoIcon />}
+          {options.style === 'warning' && <WarningIcon />}
+          <div style={{ ...toastContentStyle }}>
+            <p style={{ ...toastContentTextStyle }}>{message}</p>
           </div>
         </>
       ) : (
         <>
-          <span
-            className="icon"
-            dangerouslySetInnerHTML={{ __html: modalIcons[options.style] }}
-          />
-          <div className="alert-content">{message}</div>
-          <div className="alert-actions">
+          <div style={{ ...modalContentStyle }}>{message}</div>
+          <div>
             <button
               type="button"
               className={`block xl ${

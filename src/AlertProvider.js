@@ -159,6 +159,7 @@ const AlertProvider = ({
     info,
     failure
   }
+
   return (
     <Context.Provider value={alertContext}>
       {children}
@@ -168,7 +169,7 @@ const AlertProvider = ({
             <TransitionGroup
               appear
               key={position}
-              options={{ position, containerStyle: { zIndex: 100001 } }}
+              options={{ alert }}
               component={Wrapper}
               {...props}
             >
