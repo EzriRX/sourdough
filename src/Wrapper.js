@@ -74,7 +74,7 @@ export const getStyles = position => {
 }
 
 const Wrapper = ({ children, options: { alert }, ...props }) => {
-  const position = alert.options.position
+  const position = alert && alert.options && alert.options.position
   const styles = useMemo(() => getStyles(position), [position])
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const wrapperStyle = isMobile ? mobileAlertWrapperStyle : alertWrapperStyle

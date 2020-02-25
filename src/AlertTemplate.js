@@ -45,7 +45,7 @@ const AlertTemplate = ({ dismiss, message, options }) => {
             <button
               type="button"
               className={`block xl ${
-                options.style === 'success' ? 'button' : 'pink'
+                options.style === 'failure' ? 'pink' : options.style
               }`}
               onClick={() => dismiss()}
             >
