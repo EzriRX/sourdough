@@ -6,6 +6,7 @@ import { TransitionGroup } from 'react-transition-group'
 import { alertTypes, positions, styles } from './options'
 import DefaultContext from './AlertContext'
 import AlertTransition from './AlertTransition'
+import AlertTemplate from './AlertTemplate'
 import Wrapper from './Wrapper'
 
 const propTypes = {
@@ -63,7 +64,7 @@ const defaultProps = {
   context: DefaultContext
 }
 
-const Provider = ({
+const AlertProvider = ({
   children,
   alertType,
   position,
@@ -184,7 +185,7 @@ const Provider = ({
   )
 }
 
-Provider.propTypes = propTypes
-Provider.defaultProps = defaultProps
+AlertProvider.propTypes = propTypes
+AlertProvider.defaultProps = defaultProps
 
-export default Provider
+export default AlertProvider

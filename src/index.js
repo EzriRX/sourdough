@@ -1,6 +1,5 @@
-import Provider from './Provider'
-import AlertTemplate from './AlertTemplate'
+import AlertProvider from './AlertProvider'
 import useAlert from './useAlert'
 import { alertTypes, positions, styles } from './options'
 
-export { Provider, AlertTemplate, useAlert, alertTypes, positions, styles }
+export { AlertProvider, useAlert, alertTypes, positions, styles }
