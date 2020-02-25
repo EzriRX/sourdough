@@ -74,9 +74,9 @@ export default ExampleComponent
 
 `sourdough` supports two types of alerts:
 
-1. **Toast-style alerts.** This is the type of alert most alert libraries support by default. Toast-style alerts are small messages displayed in a specific part of the screen for a certain amount of time.
+1. __Toast-style alerts.__ This is the type of alert most alert libraries support by default. Toast-style alerts are small messages displayed in a specific part of the screen for a certain amount of time.
 
-2. **Modal-style alerts.** Modal-style alerts are "in your face" alerts that display like dialog boxes. They're a great way to communicate the response of a critical action in your app like a form submission.
+2. __Modal-style alerts.__ Modal-style alerts are "in your face" alerts that display like dialog boxes. They're a great way to communicate the response of a critical action in your app like a form submission.
 
 #### Displaying a Toast-style alert
 
@@ -98,7 +98,7 @@ alert.show('This is a strict warning!', { alertType: 'toast' })
 
 The most effective way to use a Modal-style alert in our opinion is to pass a component as the first parameter instead of a string, which you can easily do:
 
-```jsx
+```js
 import React from 'react'
 import { useAlert } from 'sourdough'
 
