@@ -40,7 +40,7 @@ The first step is to wrap your `<App />` with `<AlertProvider />`:
 ```jsx
 import React from 'react'
 import { render } from 'react-dom'
-import { AlertProvider } from 'sourdough'
+import { AlertProvider } from '@ezrirx/sourdough'
 
 const Root = () => (
   <AlertProvider>
@@ -57,7 +57,7 @@ You can use the `useAlert` hook to show alerts in your components:
 
 ```jsx
 import React from 'react'
-import { useAlert } from 'sourdough'
+import { useAlert } from '@ezrirx/sourdough'
 
 const ExampleComponent = () => {
   const alert = useAlert()
@@ -74,9 +74,9 @@ export default ExampleComponent
 
 `sourdough` supports two types of alerts:
 
-1. __Toast-style alerts.__ This is the type of alert most alert libraries support by default. Toast-style alerts are small messages displayed in a specific part of the screen for a certain amount of time.
+1. **Toast-style alerts.** This is the type of alert most alert libraries support by default. Toast-style alerts are small messages displayed in a specific part of the screen for a certain amount of time.
 
-2. __Modal-style alerts.__ Modal-style alerts are "in your face" alerts that display like dialog boxes. They're a great way to communicate the response of a critical action in your app like a form submission.
+2. **Modal-style alerts.** Modal-style alerts are "in your face" alerts that display like dialog boxes. They're a great way to communicate the response of a critical action in your app like a form submission.
 
 #### Displaying a Toast-style alert
 
@@ -100,7 +100,7 @@ The most effective way to use a Modal-style alert in our opinion is to pass a co
 
 ```js
 import React from 'react'
-import { useAlert } from 'sourdough'
+import { useAlert } from '@ezrirx/sourdough'
 
 const ExampleComponent = () => {
   const alert = useAlert()
@@ -116,7 +116,7 @@ const ExampleComponent = () => {
     <button
       onClick={() =>
         alert.success(<ModalAlertExample />, {
-          alertType: 'modal'
+          alertType: 'modal',
         })
       }
     >
@@ -148,9 +148,9 @@ const alertOptions = {
     positions.BOTTOM_RIGHT,
     positions.TOP_CENTER,
     positions.TOP_LEFT,
-    positions.TOP_RIGHT
+    positions.TOP_RIGHT,
   ]), // position of the alert on screen. note: this only applies to toast-style alerts
-  timeout: PropTypes.number // timeout until the alert disappears. set to 0 to stay on screen
+  timeout: PropTypes.number, // timeout until the alert disappears. set to 0 to stay on screen
 }
 
 alert.show('Hello world', alertOptions)
@@ -159,7 +159,7 @@ alert.show('Hello world', alertOptions)
 Note that the `position` option is available as a constant which must be imported e.g.
 
 ```js
-import { useAlert, positions } from 'sourdough'
+import { useAlert, positions } from '@ezrirx/sourdough'
 ```
 
 If you're using a modal-style alert, you don't need to pass a `position` option as these alerts will always be displayed in the middle of the screen.

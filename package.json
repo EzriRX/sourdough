@@ -1,6 +1,6 @@
 {
   "name": "@ezrirx/sourdough",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React library for toast and modal style alerts",
   "author": "Brad Purchase <brad@ezrirx.com>",
   "bugs": {
@@ -12,7 +12,6 @@
     "url": "git+ssh://git@github.com/EzriRX/sourdough.git"
   },
   "license": "MIT",
-  "private": true,
   "main": "build/index.js",
   "module": "build/index.js",
   "devDependencies": {
