@@ -134,6 +134,37 @@ Of course, you could also pass a string just like you do for toast alerts:
 alert.show("An unexpected error occurred. Please try again!", { alertStyle: 'modal' })
 ```
 
+#### Custom animation effect
+`sourdough` supports custom animation effects as well. We're using `react-transition-group` to support animation effects and to make it work you can pass custom animation classes:
+
+See below examples:
+
+```js
+const animationClasses = {
+  enter: 'animated',
+  enterDone: 'animated shake',
+  exit: 'animated',
+  exitActive: 'animated bounceInDown'
+}
+
+<AlertProvider animationClasses={animationClasses}>
+  <App />
+</AlertProvider>
+```
+or if you want then you can pass these animation classes on individual alert level also:
+
+```js
+const animationClasses = {
+  enter: 'animated',
+  enterDone: 'animated shake',
+  exit: 'animated',
+  exitActive: 'animated bounceInDown'
+}
+
+alert.success('success message', { animationClasses })
+```
+NOTE: You can take a look at [css-transition](https://reactcommunity.org/react-transition-group/css-transition) and check how you can pass `classNames` independently.
+
 ### Options
 
 `sourdough` supports a number of options so that you can effectively communicate your message:
@@ -150,6 +181,7 @@ const alertOptions = {
     positions.TOP_LEFT,
     positions.TOP_RIGHT,
   ]), // position of the alert on screen. note: this only applies to toast-style alerts
+  animationClasses: PropTypes.object, //optional animation classes
   timeout: PropTypes.number, // timeout until the alert disappears. set to 0 to stay on screen
 }
 
@@ -170,5 +202,6 @@ If you're using a modal-style alert, you don't need to pass a `position` option 
 alertType: 'toast',
 position: positions.TOP_CENTER,
 style: 'info',
-timeout: 8000
+timeout: 8000,
+animationClasses: {}
 ```

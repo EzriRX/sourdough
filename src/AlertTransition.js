@@ -4,25 +4,30 @@ import { CSSTransition } from 'react-transition-group'
 const duration = 100
 
 const defaultStyle = {
-  transition: `opacity ${duration}ms linear`,
-  opacity: 0
+  transform: 'scale(1)',
+  transition: `all ${duration}ms ease-in-out`
 }
 
 const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 }
+  entering: { transform: 'scale(0)' },
+  entered: { transform: 'scale(1)' },
+  exiting: { transform: 'scale(0)' },
+  exited: { transform: 'scale(1)' }
 }
 
-const AlertTransition = ({ children, ...props }) => (
+const fetchAnimationClasses = (animationClasses) => {
+  let animatedClasses = ''
+  if (typeof animationClasses === 'object' && Object.keys(animationClasses).length > 0) {
+    animatedClasses = animationClasses
+  }
+  return animatedClasses
+}
+
+const AlertTransition = ({ children, ...props }) => {
+  return (
   <CSSTransition
-    classNames={{
-      enter: 'animated',
-      enterDone: 'animated bounceInDown',
-      leave: 'animated',
-      leaveActive: 'animated bounceOutUp'
-    }}
+    classNames={fetchAnimationClasses(props.animationClasses)}
+    unmountOnExit
     timeout={duration}
     {...props}
   >
@@ -32,5 +37,6 @@ const AlertTransition = ({ children, ...props }) => (
       </div>
     )}
   </CSSTransition>
-)
+  )
+}
 export default AlertTransition
