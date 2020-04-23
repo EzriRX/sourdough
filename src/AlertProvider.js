@@ -27,11 +27,18 @@ const propTypes = {
    * Note: if the alertType is 'modal', this prop does nothing. Modals alerts
    * are always positioned in the exact center of the screen.
    *
-   * @default 'BOTTOM_LEFT'
+   * @default 'TOP_CENTER'
    */
   position: PropTypes.oneOf(
     Object.keys(positions).map(position => positions[position])
   ),
+
+  /**
+   * Optional animation classes
+   *
+   * @default '{}'
+   */
+  animationClasses: PropTypes.object,
 
   /**
    * Style of the alert that should be displayed.
@@ -61,6 +68,7 @@ const defaultProps = {
   position: positions.TOP_CENTER,
   style: 'info',
   timeout: 8000,
+  animationClasses: {},
   context: DefaultContext
 }
 
@@ -68,6 +76,7 @@ const AlertProvider = ({
   children,
   alertType,
   position,
+  animationClasses,
   style,
   timeout,
   context: Context,
@@ -102,10 +111,12 @@ const AlertProvider = ({
     const posOpt = options.position || position
     const timeoutOpt = options.timeout || timeout
     const typeOpt = options.alertType || alertType
+    const animatedClasses = options.animationClasses || animationClasses
     const alertOptions = {
       position: posOpt,
       alertType: typeOpt,
       timeout: timeoutOpt,
+      animationClasses: animatedClasses,
       style,
       ...options
     }
@@ -150,6 +161,10 @@ const AlertProvider = ({
     show(message, options)
   }
 
+  const getAnimatedClasses = () => {
+    return (alert && alert.options && alert.options.animationClasses) || animationClasses
+  }
+
   alertContext.current = {
     alert,
     show,
@@ -159,7 +174,6 @@ const AlertProvider = ({
     info,
     failure
   }
-
   return (
     <Context.Provider value={alertContext}>
       {children}
@@ -169,12 +183,12 @@ const AlertProvider = ({
             <TransitionGroup
               appear
               key={position}
-              options={{ alert }}
+              options={{ alert, position }}
               component={Wrapper}
               {...props}
             >
               {alert ? (
-                <AlertTransition in key={alert.id}>
+                <AlertTransition in key={alert.id} animationClasses={getAnimatedClasses()} >
                   <AlertTemplate dismiss={dismiss} {...alert} />
                 </AlertTransition>
               ) : null}

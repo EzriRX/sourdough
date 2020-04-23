@@ -1,6 +1,6 @@
 {
   "name": "@ezrirx/sourdough",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React library for toast and modal style alerts",
   "author": "Brad Purchase <brad@ezrirx.com>",
   "bugs": {
@@ -18,12 +18,10 @@
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
-    "animate.css": "^3.7.2",
     "babel-loader": "^8.0.6",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-transition-group": "^4.3.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
   },
@@ -36,6 +34,7 @@
     "build": "webpack"
   },
   "dependencies": {
-    "react-responsive": "^8.0.3"
+    "react-responsive": "^8.0.3",
+    "react-transition-group": "^4.3.0"
   }
 }
