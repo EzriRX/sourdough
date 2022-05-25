@@ -1,6 +1,6 @@
 {
   "name": "@ezrirx/sourdough",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "React library for toast and modal style alerts",
   "author": "Brad Purchase <brad@ezrirx.com>",
   "bugs": {

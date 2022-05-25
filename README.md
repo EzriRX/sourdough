@@ -1,5 +1,7 @@
 # `@ezrirx/sourdough`
 
+Recently we've upgraded react version to 17 and if you want to see react 16 version then take a look at previous release [here](https://www.npmjs.com/package/@ezrirx/sourdough/v/1.0.4)
+
 React library for toast and modal style alerts.
 
 This is heavily based on [react-alert](https://github.com/schiehll/react-alert), but at EzriRx we wanted to be able to display both toast and modal style alerts, so this library expands on it to build in that functionality and some other small things.
@@ -24,8 +26,8 @@ This package expects the following peer dependencies:
 
 ```
 "peerDependencies": {
-  "react": "^16.12.0",
-  "react-dom": "^16.12.0"
+  "react": "^16.12.0 || ^17.0.0",
+  "react-dom": "^16.12.0 || ^17.0.0"
 },
 ```
 
